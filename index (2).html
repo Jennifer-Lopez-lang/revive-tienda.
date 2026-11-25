@@ -1,0 +1,3287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReVive | Marketplace Sostenible</title>
+
+<style>
+:root{
+  --green:#16866A;
+  --dark:#073D35;
+  --turquoise:#22B8A7;
+  --yellow:#F4C95D;
+  --coral:#F28C8C;
+  --cream:#FFF9EF;
+  --white:#fff;
+  --gray:#667085;
+  --light:#F4F7F5;
+  --border:#E3E9E6;
+  --shadow:0 12px 35px rgba(7,61,53,.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--cream);
+  color:#19342F;
+  line-height:1.5;
+}
+
+button,input,select,textarea{font:inherit}
+
+button{
+  cursor:pointer;
+  border:none;
+}
+
+a{text-decoration:none;color:inherit}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+.topbar{
+  background:var(--dark);
+  color:white;
+  padding:8px 0;
+  font-size:13px;
+}
+
+.topbar-content{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav{
+  min-height:75px;
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.logo{
+  font-size:27px;
+  font-weight:900;
+  color:var(--green);
+  white-space:nowrap;
+}
+
+.logo span{color:var(--dark)}
+
+.search{
+  flex:1;
+  display:flex;
+  background:#f2f5f3;
+  border:2px solid transparent;
+  border-radius:30px;
+  overflow:hidden;
+}
+
+.search:focus-within{
+  border-color:var(--turquoise);
+}
+
+.search input{
+  flex:1;
+  border:0;
+  outline:0;
+  background:transparent;
+  padding:14px 18px;
+}
+
+.search button{
+  background:var(--green);
+  color:white;
+  padding:0 22px;
+}
+
+.nav-actions{
+  display:flex;
+  gap:8px;
+}
+
+.icon-btn{
+  position:relative;
+  background:white;
+  border:1px solid var(--border);
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  font-size:18px;
+}
+
+.badge{
+  position:absolute;
+  right:-2px;
+  top:-4px;
+  background:var(--coral);
+  color:white;
+  min-width:18px;
+  height:18px;
+  border-radius:20px;
+  font-size:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.menu{
+  display:flex;
+  gap:20px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.menu a:hover{color:var(--green)}
+
+.mobile-menu{
+  display:none;
+}
+
+.hero{
+  padding:70px 0;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(34,184,167,.22),transparent 25%),
+    linear-gradient(135deg,#effaf5,#fff9ef);
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:50px;
+  align-items:center;
+}
+
+.eyebrow{
+  display:inline-block;
+  background:#dff5ee;
+  color:var(--green);
+  padding:8px 14px;
+  border-radius:30px;
+  font-weight:bold;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:clamp(42px,6vw,70px);
+  line-height:1;
+  color:var(--dark);
+  margin-bottom:22px;
+}
+
+.hero h1 span{color:var(--green)}
+
+.hero p{
+  font-size:18px;
+  color:#566862;
+  max-width:650px;
+}
+
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.btn{
+  padding:13px 20px;
+  border-radius:12px;
+  font-weight:bold;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary{
+  background:var(--green);
+  color:white;
+}
+
+.btn-secondary{
+  background:white;
+  color:var(--dark);
+  border:1px solid var(--border);
+}
+
+.btn-yellow{
+  background:var(--yellow);
+  color:var(--dark);
+}
+
+.hero-card{
+  background:white;
+  border-radius:35px;
+  padding:35px;
+  box-shadow:var(--shadow);
+  text-align:center;
+  position:relative;
+}
+
+.planet{
+  width:240px;
+  height:240px;
+  margin:auto;
+  border-radius:50%;
+  background:linear-gradient(135deg,#55d7c1,#16866A);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:105px;
+  box-shadow:0 25px 50px rgba(22,134,106,.25);
+  animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  50%{transform:translateY(-10px) rotate(2deg)}
+}
+
+.revito{
+  margin-top:25px;
+  background:var(--cream);
+  padding:18px;
+  border-radius:20px;
+  font-weight:bold;
+}
+
+section{
+  padding:70px 0;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:38px;
+}
+
+.section-title small{
+  color:var(--green);
+  font-weight:bold;
+}
+
+.section-title h2{
+  font-size:36px;
+  color:var(--dark);
+  margin:8px 0;
+}
+
+.section-title p{
+  color:var(--gray);
+  max-width:700px;
+  margin:auto;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.info-card{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+}
+
+.info-card .emoji{
+  font-size:35px;
+}
+
+.info-card h3{margin:10px 0}
+
+.info-card p{
+  color:var(--gray);
+  font-size:14px;
+}
+
+.mission{
+  background:var(--dark);
+  color:white;
+}
+
+.mission .section-title h2,
+.mission .section-title p{
+  color:white;
+}
+
+.mission-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.mission-box{
+  padding:35px;
+  border-radius:25px;
+  background:rgba(255,255,255,.08);
+}
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+}
+
+.category{
+  background:white;
+  padding:20px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  text-align:center;
+  transition:.2s;
+}
+
+.category:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
+}
+
+.category div{
+  font-size:34px;
+  margin-bottom:7px;
+}
+
+.store{
+  background:#f4f8f5;
+}
+
+.store-tools{
+  background:white;
+  padding:20px;
+  border-radius:20px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+}
+
+.store-tools input,
+.store-tools select{
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  outline:none;
+}
+
+.store-tools input{flex:1;min-width:200px}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.product{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  overflow:hidden;
+  transition:.25s;
+  position:relative;
+}
+
+.product:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
+}
+
+.product-img{
+  height:190px;
+  background:linear-gradient(135deg,#e4f5ef,#fff5d9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:75px;
+}
+
+.product-info{padding:17px}
+
+.product-category{
+  font-size:11px;
+  color:var(--green);
+  font-weight:bold;
+  text-transform:uppercase;
+}
+
+.product h3{
+  margin:5px 0;
+  font-size:17px;
+}
+
+.rating{
+  color:#e8a900;
+  font-size:13px;
+}
+
+.price{
+  font-size:21px;
+  font-weight:900;
+  color:var(--dark);
+  margin:8px 0;
+}
+
+.old-price{
+  color:#999;
+  text-decoration:line-through;
+  font-size:13px;
+  margin-left:5px;
+}
+
+.product-actions{
+  display:grid;
+  grid-template-columns:1fr 45px;
+  gap:7px;
+}
+
+.favorite{
+  background:#fff0f0;
+  color:#d45555;
+  border-radius:10px;
+}
+
+.product .btn{width:100%}
+
+.discount{
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:var(--coral);
+  color:white;
+  padding:5px 8px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.impact{
+  background:white;
+}
+
+.impact-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.impact-number{
+  font-size:38px;
+  color:var(--green);
+  font-weight:900;
+}
+
+.market{
+  background:linear-gradient(135deg,#dff7f0,#fff5d5);
+}
+
+.market-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  align-items:center;
+}
+
+.countries{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:20px;
+}
+
+.country{
+  background:white;
+  padding:13px;
+  border-radius:12px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.process{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:10px;
+  margin-top:30px;
+}
+
+.process div{
+  background:white;
+  padding:18px 8px;
+  text-align:center;
+  border-radius:15px;
+  font-size:13px;
+}
+
+.video-box{
+  max-width:900px;
+  margin:auto;
+  background:var(--dark);
+  border-radius:28px;
+  padding:20px;
+  color:white;
+  box-shadow:var(--shadow);
+}
+
+.video-screen{
+  height:360px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#87dfc4,#16866A);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+  overflow:hidden;
+  position:relative;
+}
+
+.scene{
+  display:none;
+  animation:sceneIn .7s ease;
+}
+
+.scene.active{display:block}
+
+.scene .big{
+  font-size:90px;
+}
+
+.scene h3{
+  font-size:30px;
+  margin:12px 0;
+}
+
+@keyframes sceneIn{
+  from{opacity:0;transform:scale(.95)}
+  to{opacity:1;transform:scale(1)}
+}
+
+.video-controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:15px;
+}
+
+.progress{
+  flex:1;
+  height:7px;
+  background:#476b63;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  width:0;
+  background:var(--yellow);
+}
+
+.video-controls button{
+  background:white;
+  border-radius:9px;
+  padding:8px 12px;
+}
+
+.b2b{
+  background:var(--cream);
+}
+
+.two-columns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.form-card{
+  background:white;
+  padding:30px;
+  border-radius:25px;
+  box-shadow:var(--shadow);
+}
+
+.form-group{
+  margin-bottom:14px;
+}
+
+.form-group label{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  outline:none;
+}
+
+.form-group textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.profit{
+  background:var(--dark);
+  color:white;
+}
+
+.profit-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.profit-card{
+  background:rgba(255,255,255,.08);
+  padding:25px;
+  border-radius:20px;
+}
+
+.profit-card h3{margin:10px 0}
+
+.social{
+  text-align:center;
+}
+
+.social-links{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.social-links a{
+  padding:15px 25px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:15px;
+  font-weight:bold;
+}
+
+.faq{
+  max-width:850px;
+  margin:auto;
+}
+
+.faq-item{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  margin-bottom:10px;
+  overflow:hidden;
+}
+
+.faq-question{
+  padding:17px;
+  font-weight:bold;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+}
+
+.faq-answer{
+  display:none;
+  padding:0 17px 17px;
+  color:var(--gray);
+}
+
+.faq-item.open .faq-answer{display:block}
+
+.footer{
+  background:#062d28;
+  color:white;
+  padding:50px 0 20px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:30px;
+}
+
+.footer h3{margin-bottom:12px}
+
+.footer a{
+  display:block;
+  color:#c5d6d1;
+  margin:7px 0;
+  font-size:14px;
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.15);
+  margin-top:30px;
+  padding-top:18px;
+  text-align:center;
+  color:#a9c0ba;
+  font-size:13px;
+}
+
+/* MODALES */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  background:rgba(0,0,0,.55);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal.show{display:flex}
+
+.modal-content{
+  background:white;
+  width:min(800px,100%);
+  max-height:90vh;
+  overflow:auto;
+  border-radius:25px;
+  padding:28px;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  right:18px;
+  top:15px;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  background:#f1f4f2;
+  font-size:20px;
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:65px 1fr auto;
+  gap:12px;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+  padding:14px 0;
+}
+
+.cart-img{
+  width:60px;
+  height:60px;
+  border-radius:12px;
+  background:#eef7f3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+}
+
+.quantity{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.quantity button{
+  width:28px;
+  height:28px;
+  border-radius:7px;
+  background:#eef4f1;
+}
+
+.total-box{
+  margin-top:20px;
+  padding:18px;
+  background:#f5f8f6;
+  border-radius:15px;
+}
+
+.total-row{
+  display:flex;
+  justify-content:space-between;
+  margin:7px 0;
+}
+
+.total{
+  font-size:23px;
+  font-weight:900;
+  color:var(--green);
+}
+
+.payment-box{
+  padding:15px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  margin:8px 0;
+}
+
+.payment-box.active{
+  border-color:var(--green);
+  background:#effaf5;
+}
+
+.payment-details{
+  display:none;
+  margin-top:10px;
+}
+
+.payment-details.show{display:block}
+
+.chat{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:2000;
+}
+
+.chat-button{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:var(--green);
+  color:white;
+  font-size:25px;
+  box-shadow:var(--shadow);
+}
+
+.chat-window{
+  display:none;
+  position:absolute;
+  right:0;
+  bottom:72px;
+  width:330px;
+  background:white;
+  border-radius:20px;
+  box-shadow:0 15px 50px rgba(0,0,0,.2);
+  overflow:hidden;
+}
+
+.chat-window.show{display:block}
+
+.chat-head{
+  background:var(--green);
+  color:white;
+  padding:17px;
+}
+
+.chat-body{
+  padding:15px;
+  height:300px;
+  overflow:auto;
+}
+
+.chat-message{
+  background:#eef7f3;
+  padding:10px;
+  border-radius:12px;
+  margin-bottom:8px;
+  font-size:13px;
+}
+
+.chat-options button{
+  width:100%;
+  text-align:left;
+  padding:9px;
+  margin-top:5px;
+  background:#f5f7f6;
+  border-radius:8px;
+}
+
+.notification{
+  position:fixed;
+  right:20px;
+  top:90px;
+  z-index:5000;
+  background:var(--dark);
+  color:white;
+  padding:15px 20px;
+  border-radius:12px;
+  box-shadow:var(--shadow);
+  transform:translateX(130%);
+  transition:.3s;
+}
+
+.notification.show{
+  transform:translateX(0);
+}
+
+.profile-result{
+  background:#effaf5;
+  padding:20px;
+  border-radius:15px;
+  margin-top:15px;
+}
+
+.compare-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+
+.compare-table th,
+.compare-table td{
+  padding:12px;
+  border:1px solid var(--border);
+  text-align:left;
+}
+
+@media(max-width:1000px){
+  .menu{display:none}
+  .mobile-menu{display:block}
+  .cards,.products{grid-template-columns:repeat(2,1fr)}
+  .categories{grid-template-columns:repeat(3,1fr)}
+  .impact-grid{grid-template-columns:repeat(2,1fr)}
+  .process{grid-template-columns:repeat(3,1fr)}
+}
+
+@media(max-width:700px){
+  .topbar-content{display:none}
+  .nav{gap:8px}
+  .logo{font-size:21px}
+  .search{order:3;width:100%;flex-basis:100%}
+  .nav{flex-wrap:wrap;padding:12px 0}
+  .hero-grid,
+  .mission-grid,
+  .market-grid,
+  .two-columns{
+    grid-template-columns:1fr;
+  }
+  .hero{padding:45px 0}
+  section{padding:50px 0}
+  .cards,.products{grid-template-columns:1fr}
+  .categories{grid-template-columns:repeat(2,1fr)}
+  .impact-grid{grid-template-columns:1fr 1fr}
+  .countries{grid-template-columns:1fr 1fr}
+  .process{grid-template-columns:1fr 1fr}
+  .profit-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .video-screen{height:280px}
+}
+
+@media(max-width:450px){
+  .nav-actions .icon-btn:nth-child(1){display:none}
+  .footer-grid{grid-template-columns:1fr}
+  .planet{width:190px;height:190px;font-size:75px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="container topbar-content">
+    <span>🌱 ReVive — Comercio sostenible desde Ecuador</span>
+    <span>🌎 Mercados objetivo: Ecuador + expansión internacional</span>
+  </div>
+</div>
+
+<nav class="navbar">
+  <div class="container nav">
+
+    <a href="#inicio" class="logo">🌱 Re<span>Vive</span></a>
+
+    <div class="search">
+      <input id="searchInput" type="text"
+             placeholder="Buscar productos, categorías, kits...">
+      <button onclick="searchProducts()">🔍</button>
+    </div>
+
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="openModal('favoritesModal')">
+        ❤️
+        <span class="badge" id="favoriteBadge">0</span>
+      </button>
+
+      <button class="icon-btn" onclick="openModal('cartModal')">
+        🛒
+        <span class="badge" id="cartBadge">0</span>
+      </button>
+
+      <button class="icon-btn" onclick="openModal('accountModal')">👤</button>
+    </div>
+
+    <button class="icon-btn mobile-menu" onclick="toggleMobile()">☰</button>
+
+    <div class="menu" id="menu">
+      <a href="#tienda">Tienda</a>
+      <a href="#categorias">Categorías</a>
+      <a href="#impacto">Impacto</a>
+      <a href="#global">Comercio exterior</a>
+      <a href="#b2b">B2B</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+
+  </div>
+</nav>
+
+<main>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+
+    <div>
+      <span class="eyebrow">🌎 Marketplace sostenible</span>
+
+      <h1>
+        Compra sostenible.<br>
+        <span>Vende al mundo.</span>
+      </h1>
+
+      <p>
+        Descubre productos reutilizables y responsables, conecta con proveedores,
+        compra en línea y participa en una nueva forma de comercio electrónico
+        comprometida con el planeta y la sociedad.
+      </p>
+
+      <div class="actions">
+        <a href="#tienda" class="btn btn-primary">🛍️ Explorar productos</a>
+        <a href="#global" class="btn btn-secondary">🌎 Comercio exterior</a>
+        <button class="btn btn-yellow" onclick="openModal('supplierModal')">
+          🤝 Vender en ReVive
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="planet">🌎</div>
+
+      <div class="revito">
+        🌱 <strong>¡Hola! Soy Revito</strong><br>
+        Te ayudaré a encontrar productos sostenibles
+        y descubrir cómo tus decisiones pueden generar
+        un impacto positivo.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <small>¿POR QUÉ REVIVE?</small>
+      <h2>Una nueva experiencia de compra</h2>
+      <p>
+        Diseñamos una plataforma donde comprar, vender, aprender
+        y generar impacto puedan convivir.
+      </p>
+    </div>
+
+    <div class="cards">
+      <div class="info-card">
+        <div class="emoji">♻️</div>
+        <h3>Reutilización</h3>
+        <p>Productos pensados para fomentar hábitos de consumo responsables.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">🛒</div>
+        <h3>E-commerce</h3>
+        <p>Busca, compara, guarda, compra y realiza seguimiento de tus pedidos.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">🌎</div>
+        <h3>Comercio exterior</h3>
+        <p>Proyección hacia mercados internacionales y oportunidades B2B.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">💚</div>
+        <h3>Impacto social</h3>
+        <p>El proyecto contempla acciones ambientales y apoyo social.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mission">
+  <div class="container">
+    <div class="section-title">
+      <small>REVIVE</small>
+      <h2>Quiénes somos</h2>
+      <p>
+        Una propuesta de comercio electrónico sostenible con visión internacional.
+      </p>
+    </div>
+
+    <div class="mission-grid">
+      <div class="mission-box">
+        <h2>🎯 Misión</h2>
+        <br>
+        <p>
+          Ofrecer productos reutilizables, sostenibles y responsables mediante
+          el comercio electrónico, facilitando que las personas y empresas
+          adopten hábitos de consumo más conscientes, mientras ReVive contribuye
+          al cuidado del medio ambiente y desarrolla acciones de impacto social.
+        </p>
+      </div>
+
+      <div class="mission-box">
+        <h2>🔭 Visión</h2>
+        <br>
+        <p>
+          Ser una tienda virtual sostenible reconocida en Ecuador y proyectarse
+          hacia mercados internacionales como una marca comprometida con la
+          reutilización, el comercio electrónico, el comercio exterior,
+          la protección ambiental y el apoyo a comunidades y grupos que
+          necesitan oportunidades.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="categorias">
+  <div class="container">
+    <div class="section-title">
+      <small>EXPLORA</small>
+      <h2>Categorías</h2>
+      <p>Encuentra rápidamente lo que necesitas.</p>
+    </div>
+
+    <div class="categories">
+
+      <button class="category" onclick="filterCategory('Reutilizables')">
+        <div>♻️</div><strong>Reutilizables</strong>
+      </button>
+
+      <button class="category" onclick="filterCategory('Hogar')">
+        <div>🏠</div><strong>Hogar</strong>
+      </button>
+
+      <button class="category" onclick="filterCategory('Higiene')">
+        <div>🧼</div><strong>Higiene</strong>
+      </button>
+
+      <button class="category" onclick="filterCategory('Jardinería')">
+        <div>🌱</div><strong>Jardinería</strong>
+      </button>
+
+      <button class="category" onclick="filterCategory('Kits')">
+        <div>🎁</div><strong>Kits</strong>
+      </button>
+
+      <button class="category" onclick="filterCategory('Alimentación')">
+        <div>🍫</div><strong>Alimentación</strong>
+      </button>
+
+      <button class="category" onclick="filterCategory('Viaje')">
+        <div>✈️</div><strong>Viaje</strong>
+      </button>
+
+      <button class="category" onclick="filterCategory('Oficina')">
+        <div>📚</div><strong>Oficina</strong>
+      </button>
+
+      <button class="category" onclick="filterCategory('Accesorios')">
+        <div>👜</div><strong>Accesorios</strong>
+      </button>
+
+      <button class="category" onclick="filterCategory('all')">
+        <div>🌎</div><strong>Ver todo</strong>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<section class="store" id="tienda">
+
+  <div class="container">
+
+    <div class="section-title">
+      <small>MARKETPLACE REVIVE</small>
+      <h2>🛍️ Catálogo de productos</h2>
+      <p>
+        Compra productos sostenibles y encuentra opciones para tu hogar,
+        oficina, viajes y negocios.
+      </p>
+    </div>
+
+    <div class="store-tools">
+
+      <input id="catalogSearch"
+             placeholder="🔍 Buscar en el catálogo..."
+             oninput="renderProducts()">
+
+      <select id="categoryFilter" onchange="renderProducts()">
+        <option value="all">Todas las categorías</option>
+        <option>Reutilizables</option>
+        <option>Hogar</option>
+        <option>Higiene</option>
+        <option>Jardinería</option>
+        <option>Kits</option>
+        <option>Alimentación</option>
+        <option>Viaje</option>
+        <option>Oficina</option>
+        <option>Accesorios</option>
+      </select>
+
+      <select id="sortFilter" onchange="renderProducts()">
+        <option value="relevant">Más relevantes</option>
+        <option value="priceLow">Precio menor</option>
+        <option value="priceHigh">Precio mayor</option>
+        <option value="rating">Mejor valorados</option>
+        <option value="discount">Mayor descuento</option>
+      </select>
+
+      <button class="btn btn-secondary" onclick="clearFilters()">
+        Limpiar filtros
+      </button>
+
+      <button class="btn btn-yellow" onclick="openModal('compareModal')">
+        ⚖️ Comparar
+      </button>
+
+    </div>
+
+    <div id="products" class="products"></div>
+
+  </div>
+</section>
+
+<section id="impacto" class="impact">
+  <div class="container">
+
+    <div class="section-title">
+      <small>COMPROMISO</small>
+      <h2>🌱 Nuestro impacto</h2>
+      <p>
+        ReVive busca promover decisiones de consumo más responsables.
+      </p>
+    </div>
+
+    <div class="impact-grid">
+
+      <div class="info-card">
+        <div class="impact-number">♻️</div>
+        <h3>Reutilización</h3>
+        <p>Promovemos alternativas reutilizables frente a productos de un solo uso.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="impact-number">🌱</div>
+        <h3>Educación</h3>
+        <p>Compartimos información para impulsar hábitos sostenibles.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="impact-number">📦</div>
+        <h3>Consumo responsable</h3>
+        <p>Facilitamos el acceso a productos que apoyan estilos de vida responsables.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="impact-number">🌎</div>
+        <h3>Visión global</h3>
+        <p>Buscamos conectar productos sostenibles con nuevos mercados.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <small>CONCIENTIZACIÓN</small>
+      <h2>🌎 Pequeñas decisiones pueden cambiar nuestro planeta</h2>
+      <p>
+        Una experiencia interactiva para recordar que los cambios cotidianos
+        también importan.
+      </p>
+    </div>
+
+    <div class="video-box">
+
+      <div class="video-screen">
+
+        <div class="scene active">
+          <div class="big">🌎</div>
+          <h3>Un planeta que compartimos</h3>
+          <p>La naturaleza nos proporciona los recursos que necesitamos.</p>
+        </div>
+
+        <div class="scene">
+          <div class="big">🛍️</div>
+          <h3>Nuestras decisiones cuentan</h3>
+          <p>Cada compra puede convertirse en una oportunidad para consumir mejor.</p>
+        </div>
+
+        <div class="scene">
+          <div class="big">🗑️</div>
+          <h3>Los residuos se acumulan</h3>
+          <p>Reducir productos desechables ayuda a disminuir la generación de residuos.</p>
+        </div>
+
+        <div class="scene">
+          <div class="big">🌊</div>
+          <h3>Cuidemos nuestros ecosistemas</h3>
+          <p>Océanos, ríos, bosques y ciudades forman parte de nuestro futuro.</p>
+        </div>
+
+        <div class="scene">
+          <div class="big">♻️</div>
+          <h3>Reutilizar es una decisión</h3>
+          <p>Una botella, una bolsa o un recipiente pueden tener muchas vidas.</p>
+        </div>
+
+        <div class="scene">
+          <div class="big">🌱</div>
+          <h3>Construyamos nuevos hábitos</h3>
+          <p>Pequeños cambios pueden convertirse en grandes acciones colectivas.</p>
+        </div>
+
+        <div class="scene">
+          <div class="big">💚</div>
+          <h3>ReVive</h3>
+          <p>Cambia tus hábitos, cuida el planeta y construye un futuro sostenible.</p>
+        </div>
+
+      </div>
+
+      <div class="video-controls">
+        <button onclick="videoPlay()">▶️</button>
+        <button onclick="videoPause()">⏸️</button>
+        <button onclick="videoRestart()">🔄</button>
+        <div class="progress">
+          <div id="videoProgress" class="progress-bar"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="market" id="global">
+
+  <div class="container">
+
+    <div class="market-grid">
+
+      <div>
+        <span class="eyebrow">🌎 REVIVE GLOBAL</span>
+        <h2 style="font-size:42px;color:var(--dark)">
+          De Ecuador hacia el mundo.
+        </h2>
+
+        <p style="margin-top:15px;color:#566862">
+          ReVive busca desarrollar oportunidades mediante comercio electrónico,
+          comercio exterior, ventas B2B y alianzas comerciales.
+        </p>
+
+        <div class="countries">
+
+          <div class="country">🇺🇸 Estados Unidos</div>
+          <div class="country">🇨🇦 Canadá</div>
+          <div class="country">🇪🇸 España</div>
+          <div class="country">🇩🇪 Alemania</div>
+          <div class="country">🇫🇷 Francia</div>
+          <div class="country">🇳🇱 Países Bajos</div>
+          <div class="country">🇨🇱 Chile</div>
+          <div class="country">🇨🇴 Colombia</div>
+          <div class="country">🇵🇪 Perú</div>
+
+        </div>
+
+        <p style="font-size:12px;margin-top:15px;color:#667085">
+          *Estos países representan mercados objetivo y oportunidades de expansión,
+          no una afirmación de ventas actuales.
+        </p>
+      </div>
+
+      <div class="form-card">
+        <h2>📦 ¿Cómo funciona una operación internacional?</h2>
+
+        <div class="process">
+          <div>🛍️<br>Compra</div>
+          <div>📦<br>Preparación</div>
+          <div>📄<br>Documentos</div>
+          <div>🚚<br>Transporte</div>
+          <div>🛃<br>Aduana</div>
+          <div>🏠<br>Entrega</div>
+        </div>
+
+        <br>
+
+        <p>
+          La plataforma integra la experiencia digital con una visión de
+          comercio exterior para facilitar futuras operaciones internacionales.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="b2b" id="b2b">
+
+  <div class="container">
+
+    <div class="section-title">
+      <small>REVIVE BUSINESS</small>
+      <h2>🤝 Soluciones B2B</h2>
+      <p>
+        Compra al por mayor, solicita cotizaciones y encuentra oportunidades
+        para empresas.
+      </p>
+    </div>
+
+    <div class="two-columns">
+
+      <div class="info-card">
+        <div class="emoji">🏢</div>
+        <h3>Para empresas</h3>
+        <p>
+          Hoteles, restaurantes, oficinas, tiendas, distribuidores y negocios
+          pueden solicitar productos y cotizaciones.
+        </p>
+
+        <div class="actions">
+          <button class="btn btn-primary"
+                  onclick="openModal('quoteModal')">
+            Solicitar cotización
+          </button>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="emoji">📦</div>
+        <h3>Pedidos grandes</h3>
+        <p>
+          Solicita cantidades especiales, productos personalizados y soluciones
+          sostenibles para tu negocio.
+        </p>
+
+        <div class="actions">
+          <button class="btn btn-secondary"
+                  onclick="openModal('quoteModal')">
+            Quiero información
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <small>DESCUBRE</small>
+      <h2>🌱 ¿Cuál es tu perfil sostenible?</h2>
+      <p>Responde unas preguntas y recibe recomendaciones.</p>
+    </div>
+
+    <div class="form-card" style="max-width:700px;margin:auto">
+
+      <div class="form-group">
+        <label>¿Qué categoría te interesa más?</label>
+        <select id="profileCategory">
+          <option>Reutilizables</option>
+          <option>Hogar</option>
+          <option>Higiene</option>
+          <option>Viaje</option>
+          <option>Jardinería</option>
+          <option>Kits</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>¿Con qué frecuencia reutilizas productos?</label>
+        <select id="profileFrequency">
+          <option>Siempre</option>
+          <option>Frecuentemente</option>
+          <option>A veces</option>
+          <option>Quiero comenzar</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>¿Qué quieres mejorar?</label>
+        <select id="profileGoal">
+          <option>Reducir residuos</option>
+          <option>Comprar mejor</option>
+          <option>Organizar mi hogar</option>
+          <option>Viajar de forma sostenible</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" onclick="generateProfile()">
+        ✨ Descubrir mi perfil
+      </button>
+
+      <div id="profileResult"></div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="profit">
+
+  <div class="container">
+
+    <div class="section-title">
+      <small style="color:var(--yellow)">IMPACTO SOCIAL</small>
+      <h2>💚 ¿A dónde va el valor generado?</h2>
+      <p>
+        ReVive contempla diferentes líneas de destino para fortalecer
+        su crecimiento, sostenibilidad e impacto social.
+      </p>
+    </div>
+
+    <div class="profit-grid">
+
+      <div class="profit-card">
+        <div class="emoji">🌱</div>
+        <h3>Sostenibilidad</h3>
+        <p>Proyectos y acciones relacionados con el cuidado ambiental.</p>
+      </div>
+
+      <div class="profit-card">
+        <div class="emoji">♻️</div>
+        <h3>Economía circular</h3>
+        <p>Innovación y promoción de modelos de reutilización.</p>
+      </div>
+
+      <div class="profit-card">
+        <div class="emoji">📚</div>
+        <h3>Educación ambiental</h3>
+        <p>Contenido y acciones para generar conciencia.</p>
+      </div>
+
+      <div class="profit-card">
+        <div class="emoji">🚀</div>
+        <h3>Crecimiento</h3>
+        <p>Reinversión, operaciones, innovación y expansión.</p>
+      </div>
+
+      <div class="profit-card">
+        <div class="emoji">🌎</div>
+        <h3>Expansión internacional</h3>
+        <p>Desarrollo de oportunidades en nuevos mercados.</p>
+      </div>
+
+      <div class="profit-card">
+        <div class="emoji">❤️</div>
+        <h3>Apoyo social</h3>
+        <p>Acciones de apoyo dirigidas a niños y niñas en situación de orfandad.</p>
+      </div>
+
+    </div>
+
+    <p style="text-align:center;margin-top:25px;color:#c4d4d0;font-size:13px">
+      ReVive no establece porcentajes fijos en esta demostración.
+      Las líneas representan áreas previstas de destino y compromiso.
+    </p>
+
+  </div>
+</section>
+
+<section class="social">
+
+  <div class="container">
+
+    <div class="section-title">
+      <small>COMUNIDAD REVIVE</small>
+      <h2>📱 Conecta con nosotros</h2>
+      <p>Sigue nuestras novedades, productos y campañas.</p>
+    </div>
+
+    <div class="social-links">
+
+      <a href="https://www.instagram.com/" target="_blank">📸 Instagram</a>
+      <a href="https://www.facebook.com/" target="_blank">📘 Facebook</a>
+      <a href="https://www.tiktok.com/" target="_blank">🎵 TikTok</a>
+      <a href="https://www.youtube.com/" target="_blank">▶️ YouTube</a>
+
+    </div>
+
+    <p style="margin-top:20px;color:#667085">
+      @revive.ec · ReVive Ecuador
+    </p>
+
+  </div>
+</section>
+
+<section id="contacto">
+
+  <div class="container">
+
+    <div class="section-title">
+      <small>ESTAMOS PARA AYUDARTE</small>
+      <h2>📩 Contacto</h2>
+    </div>
+
+    <div class="form-card" style="max-width:700px;margin:auto">
+
+      <div class="form-group">
+        <label>Nombre</label>
+        <input id="contactName" placeholder="Tu nombre">
+      </div>
+
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input id="contactEmail" type="email" placeholder="correo@ejemplo.com">
+      </div>
+
+      <div class="form-group">
+        <label>Asunto</label>
+        <input id="contactSubject" placeholder="¿En qué podemos ayudarte?">
+      </div>
+
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea id="contactMessage"></textarea>
+      </div>
+
+      <button class="btn btn-primary" onclick="sendContact()">
+        📩 Enviar mensaje
+      </button>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <small>PREGUNTAS FRECUENTES</small>
+      <h2>❓ Ayuda</h2>
+    </div>
+
+    <div class="faq">
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ¿Cómo puedo comprar? <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Selecciona un producto, agrégalo al carrito, revisa tu pedido
+          y continúa con el proceso de checkout.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ¿Realizan envíos internacionales? <span>+</span>
+        </div>
+        <div class="faq-answer">
+          ReVive está diseñado con una visión de expansión internacional.
+          Las condiciones reales de envío dependerán del mercado y logística.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ¿Cómo puedo vender en ReVive? <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Puedes utilizar el formulario "Quiero ser proveedor" para registrar
+          una solicitud de demostración.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ¿Puedo comprar como empresa? <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Sí. La plataforma contempla una modalidad B2B para compras por
+          volumen y solicitudes de cotización.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ¿Los pagos son reales? <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Esta versión es una demostración frontend. Para pagos reales
+          se debe conectar una pasarela segura y un backend.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <div class="logo" style="color:#7ce0c6">
+          🌱 ReVive
+        </div>
+        <p style="margin-top:15px;color:#b9ccc7">
+          Compra sostenible, vende al mundo y cambia el futuro.
+        </p>
+      </div>
+
+      <div>
+        <h3>Marketplace</h3>
+        <a href="#tienda">Tienda</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#" onclick="openModal('favoritesModal')">Favoritos</a>
+        <a href="#" onclick="openModal('cartModal')">Carrito</a>
+      </div>
+
+      <div>
+        <h3>Negocios</h3>
+        <a href="#b2b">B2B</a>
+        <a href="#" onclick="openModal('supplierModal')">Proveedores</a>
+        <a href="#global">Comercio exterior</a>
+        <a href="#" onclick="openModal('quoteModal')">Cotizaciones</a>
+      </div>
+
+      <div>
+        <h3>Ayuda</h3>
+        <a href="#contacto">Contacto</a>
+        <a href="#contacto">Preguntas frecuentes</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 ReVive. Proyecto de demostración de comercio electrónico sostenible.
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- CHAT -->
+
+<div class="chat">
+
+  <div class="chat-window" id="chatWindow">
+
+    <div class="chat-head">
+      <strong>🌱 Revito</strong><br>
+      <small>Asistente de ReVive</small>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+
+      <div class="chat-message">
+        ¡Hola! 👋 Soy Revito. ¿En qué puedo ayudarte?
+      </div>
+
+      <div class="chat-options">
+
+        <button onclick="chatAnswer('buy')">
+          🛒 ¿Cómo comprar?
+        </button>
+
+        <button onclick="chatAnswer('shipping')">
+          📦 ¿Cómo funciona el envío?
+        </button>
+
+        <button onclick="chatAnswer('international')">
+          🌎 ¿Hacen envíos internacionales?
+        </button>
+
+        <button onclick="chatAnswer('supplier')">
+          🤝 ¿Cómo puedo vender?
+        </button>
+
+        <button onclick="chatAnswer('impact')">
+          🌱 ¿Cuál es el impacto?
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <button class="chat-button" onclick="toggleChat()">💬</button>
+
+</div>
+
+<div class="notification" id="notification"></div>
+
+<!-- CARRITO -->
+
+<div class="modal" id="cartModal">
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal('cartModal')">×</button>
+
+    <h2>🛒 Mi carrito</h2>
+
+    <div id="cartItems"></div>
+
+    <div class="total-box">
+
+      <div class="total-row">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">$0.00</strong>
+      </div>
+
+      <div class="total-row">
+        <span>Descuento</span>
+        <strong id="cartDiscount">$0.00</strong>
+      </div>
+
+      <div class="total-row">
+        <span>Envío</span>
+        <strong id="cartShipping">$0.00</strong>
+      </div>
+
+      <hr style="margin:12px 0">
+
+      <div class="total-row total">
+        <span>Total</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+
+    </div>
+
+    <div style="display:flex;gap:10px;margin-top:15px">
+      <input id="couponInput"
+             placeholder="Código promocional"
+             style="flex:1;padding:12px;border:1px solid #ddd;border-radius:10px">
+
+      <button class="btn btn-yellow" onclick="applyCoupon()">
+        Aplicar
+      </button>
+    </div>
+
+    <button class="btn btn-primary"
+            style="width:100%;margin-top:15px"
+            onclick="openCheckout()">
+      Continuar al checkout
+    </button>
+
+  </div>
+</div>
+
+<!-- FAVORITOS -->
+
+<div class="modal" id="favoritesModal">
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal('favoritesModal')">×</button>
+
+    <h2>❤️ Mis favoritos</h2>
+
+    <div id="favoriteItems" style="margin-top:20px"></div>
+
+  </div>
+</div>
+
+<!-- PRODUCTO -->
+
+<div class="modal" id="productModal">
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal('productModal')">×</button>
+
+    <div id="productDetail"></div>
+
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+
+<div class="modal" id="checkoutModal">
+
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal('checkoutModal')">×</button>
+
+    <h2>🛍️ Finalizar compra</h2>
+
+    <br>
+
+    <h3>1. Datos del cliente</h3>
+
+    <div class="two-columns">
+
+      <div class="form-group">
+        <label>Nombre</label>
+        <input id="checkoutName">
+      </div>
+
+      <div class="form-group">
+        <label>Apellido</label>
+        <input id="checkoutLast">
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label>Correo</label>
+      <input id="checkoutEmail" type="email">
+    </div>
+
+    <div class="form-group">
+      <label>Teléfono</label>
+      <input id="checkoutPhone">
+    </div>
+
+    <h3>2. Dirección</h3>
+
+    <div class="two-columns">
+
+      <div class="form-group">
+        <label>País</label>
+        <select id="checkoutCountry">
+          <option>Ecuador</option>
+          <option>Estados Unidos</option>
+          <option>Canadá</option>
+          <option>España</option>
+          <option>Alemania</option>
+          <option>Francia</option>
+          <option>Países Bajos</option>
+          <option>Chile</option>
+          <option>Colombia</option>
+          <option>Perú</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Ciudad</label>
+        <input id="checkoutCity">
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label>Dirección</label>
+      <input id="checkoutAddress">
+    </div>
+
+    <h3>3. Envío</h3>
+
+    <select id="shippingMethod"
+            onchange="updateCart()"
+            style="width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin:10px 0">
+      <option value="4">Envío estándar — $4.00</option>
+      <option value="9">Envío rápido — $9.00</option>
+      <option value="18">Envío internacional — $18.00</option>
+    </select>
+
+    <h3>4. Método de pago</h3>
+
+    <div class="payment-box" onclick="selectPayment('card',this)">
+      💳 Tarjeta de crédito / débito
+      <div class="payment-details" id="cardDetails">
+
+        <div class="form-group">
+          <label>Número de tarjeta</label>
+          <input placeholder="0000 0000 0000 0000"
+                 maxlength="19"
+                 oninput="formatCard(this)">
+        </div>
+
+        <div class="two-columns">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input placeholder="Nombre">
+          </div>
+
+          <div class="form-group">
+            <label>Fecha / CVV</label>
+            <input placeholder="MM/AA - CVV">
+          </div>
+        </div>
+
+        <small>
+          🔒 Demo: no se almacenan datos de tarjetas.
+        </small>
+
+      </div>
+    </div>
+
+    <div class="payment-box" onclick="selectPayment('transfer',this)">
+      🏦 Transferencia bancaria
+
+      <div class="payment-details" id="transferDetails">
+
+        <p><strong>Número de cuenta:</strong> 2208654745</p>
+        <p><strong>BrodúBanco:</strong> 20006989533</p>
+
+        <button class="btn btn-secondary"
+                onclick="copyTransfer(event)">
+          📋 Copiar datos
+        </button>
+
+        <p style="font-size:12px;margin-top:10px">
+          Conserva tu comprobante para validar el pedido.
+        </p>
+
+      </div>
+    </div>
+
+    <div class="payment-box" onclick="selectPayment('paypal',this)">
+      🅿️ PayPal
+    </div>
+
+    <div class="payment-box" onclick="selectPayment('cash',this)">
+      💵 Contra entrega
+    </div>
+
+    <div class="total-box">
+
+      <div class="total-row">
+        <span>Total a pagar</span>
+        <strong class="total" id="checkoutTotal">$0.00</strong>
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary"
+            style="width:100%;margin-top:15px"
+            onclick="submitOrder()">
+      ✅ Confirmar pedido
+    </button>
+
+  </div>
+</div>
+
+<!-- CUENTA -->
+
+<div class="modal" id="accountModal">
+
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal('accountModal')">×</button>
+
+    <h2>👤 Mi cuenta</h2>
+
+    <div class="cards" style="grid-template-columns:1fr 1fr;margin-top:20px">
+
+      <button class="info-card" onclick="showNotification('Sección de pedidos abierta')">
+        📦<br><strong>Mis pedidos</strong>
+      </button>
+
+      <button class="info-card" onclick="openModal('favoritesModal')">
+        ❤️<br><strong>Favoritos</strong>
+      </button>
+
+      <button class="info-card" onclick="showNotification('Tus cotizaciones aparecerán aquí')">
+        📄<br><strong>Cotizaciones</strong>
+      </button>
+
+      <button class="info-card" onclick="showNotification('Seguimiento de pedidos disponible después de comprar')">
+        🚚<br><strong>Seguimiento</strong>
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- PROVEEDOR -->
+
+<div class="modal" id="supplierModal">
+
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal('supplierModal')">×</button>
+
+    <h2>🤝 Quiero vender en ReVive</h2>
+
+    <div class="form-group">
+      <label>Nombre del negocio</label>
+      <input id="supplierBusiness">
+    </div>
+
+    <div class="form-group">
+      <label>País</label>
+      <input id="supplierCountry" placeholder="Ecuador">
+    </div>
+
+    <div class="form-group">
+      <label>Producto</label>
+      <input id="supplierProduct">
+    </div>
+
+    <div class="form-group">
+      <label>Categoría</label>
+      <input id="supplierCategory">
+    </div>
+
+    <div class="form-group">
+      <label>Correo</label>
+      <input id="supplierEmail">
+    </div>
+
+    <div class="form-group">
+      <label>Descripción</label>
+      <textarea id="supplierDescription"></textarea>
+    </div>
+
+    <button class="btn btn-primary"
+            style="width:100%"
+            onclick="submitSupplier()">
+      🚀 Enviar solicitud
+    </button>
+
+  </div>
+</div>
+
+<!-- COTIZACION -->
+
+<div class="modal" id="quoteModal">
+
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal('quoteModal')">×</button>
+
+    <h2>📄 Solicitar cotización B2B</h2>
+
+    <div class="form-group">
+      <label>Empresa</label>
+      <input id="quoteCompany">
+    </div>
+
+    <div class="form-group">
+      <label>Persona de contacto</label>
+      <input id="quoteContact">
+    </div>
+
+    <div class="form-group">
+      <label>País</label>
+      <input id="quoteCountry">
+    </div>
+
+    <div class="form-group">
+      <label>Producto</label>
+      <input id="quoteProduct">
+    </div>
+
+    <div class="form-group">
+      <label>Cantidad</label>
+      <input id="quoteQuantity" type="number">
+    </div>
+
+    <div class="form-group">
+      <label>Mensaje</label>
+      <textarea id="quoteMessage"></textarea>
+    </div>
+
+    <button class="btn btn-primary"
+            style="width:100%"
+            onclick="submitQuote()">
+      📩 Solicitar cotización
+    </button>
+
+  </div>
+</div>
+
+<!-- COMPARADOR -->
+
+<div class="modal" id="compareModal">
+
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal('compareModal')">×</button>
+
+    <h2>⚖️ Comparador de productos</h2>
+
+    <p style="margin-top:8px;color:#667085">
+      Selecciona productos desde el catálogo para compararlos.
+    </p>
+
+    <div id="compareContent"></div>
+
+  </div>
+</div>
+
+<script>
+
+/* ===========================
+   PRODUCTOS
+=========================== */
+
+const products = [
+
+{id:1,name:"Botella reutilizable",category:"Reutilizables",price:12.50,oldPrice:15,rating:4.8,stock:25,emoji:"🥤",origin:"Ecuador"},
+{id:2,name:"Vaso reutilizable",category:"Reutilizables",price:8.50,oldPrice:10,rating:4.7,stock:40,emoji:"🥛",origin:"Ecuador"},
+{id:3,name:"Bolsa ecológica",category:"Accesorios",price:6,oldPrice:8,rating:4.6,stock:60,emoji:"👜",origin:"Ecuador"},
+{id:4,name:"Set de cubiertos reutilizables",category:"Reutilizables",price:9.50,oldPrice:12,rating:4.9,stock:30,emoji:"🍴",origin:"Ecuador"},
+{id:5,name:"Cepillo dental de bambú",category:"Higiene",price:5.50,oldPrice:7,rating:4.7,stock:50,emoji:"🪥",origin:"Ecuador"},
+{id:6,name:"Jabón artesanal natural",category:"Higiene",price:4.50,oldPrice:6,rating:4.8,stock:45,emoji:"🧼",origin:"Ecuador"},
+{id:7,name:"Shampoo sólido",category:"Higiene",price:7.50,oldPrice:9,rating:4.8,stock:35,emoji:"🧴",origin:"Ecuador"},
+{id:8,name:"Esponja vegetal",category:"Higiene",price:3.50,oldPrice:5,rating:4.5,stock:50,emoji:"🌿",origin:"Ecuador"},
+{id:9,name:"Velas ecológicas",category:"Hogar",price:10,oldPrice:13,rating:4.7,stock:30,emoji:"🕯️",origin:"Ecuador"},
+{id:10,name:"Maceta reciclada",category:"Jardinería",price:8,oldPrice:10,rating:4.6,stock:25,emoji:"🪴",origin:"Ecuador"},
+{id:11,name:"Cuaderno ecológico",category:"Oficina",price:6.50,oldPrice:8,rating:4.8,stock:40,emoji:"📓",origin:"Ecuador"},
+{id:12,name:"Agenda reciclada",category:"Oficina",price:9,oldPrice:12,rating:4.7,stock:35,emoji:"📔",origin:"Ecuador"},
+{id:13,name:"Kit sostenible para el hogar",category:"Kits",price:28,oldPrice:35,rating:4.9,stock:15,emoji:"🏠",origin:"Ecuador"},
+{id:14,name:"Kit higiene sostenible",category:"Kits",price:22,oldPrice:28,rating:4.8,stock:18,emoji:"🧼",origin:"Ecuador"},
+{id:15,name:"Kit cero residuos",category:"Kits",price:35,oldPrice:45,rating:5,stock:12,emoji:"♻️",origin:"Ecuador"},
+{id:16,name:"Kit regalo ecológico",category:"Kits",price:30,oldPrice:38,rating:4.8,stock:20,emoji:"🎁",origin:"Ecuador"},
+{id:17,name:"Porta celular reciclado",category:"Accesorios",price:7.50,oldPrice:10,rating:4.5,stock:25,emoji:"📱",origin:"Ecuador"},
+{id:18,name:"Organizador reciclado",category:"Hogar",price:11,oldPrice:14,rating:4.7,stock:22,emoji:"🗃️",origin:"Ecuador"},
+{id:19,name:"Cesta artesanal",category:"Hogar",price:18,oldPrice:22,rating:4.9,stock:15,emoji:"🧺",origin:"Ecuador"},
+{id:20,name:"Decoración reciclada",category:"Hogar",price:15,oldPrice:19,rating:4.6,stock:20,emoji:"🖼️",origin:"Ecuador"},
+{id:21,name:"Café sostenible",category:"Alimentación",price:7,oldPrice:9,rating:4.9,stock:50,emoji:"☕",origin:"Ecuador"},
+{id:22,name:"Chocolate artesanal",category:"Alimentación",price:8.50,oldPrice:10,rating:5,stock:40,emoji:"🍫",origin:"Ecuador"},
+{id:23,name:"Granola natural",category:"Alimentación",price:6.50,oldPrice:8,rating:4.7,stock:35,emoji:"🥣",origin:"Ecuador"},
+{id:24,name:"Infusión natural",category:"Alimentación",price:5,oldPrice:6.50,rating:4.6,stock:45,emoji:"🍵",origin:"Ecuador"},
+{id:25,name:"Popote reutilizable",category:"Reutilizables",price:4,oldPrice:5.50,rating:4.5,stock:70,emoji:"🥤",origin:"Ecuador"},
+{id:26,name:"Termo ecológico",category:"Reutilizables",price:18,oldPrice:22,rating:4.9,stock:25,emoji:"🫗",origin:"Ecuador"},
+{id:27,name:"Lonchera reutilizable",category:"Reutilizables",price:16,oldPrice:20,rating:4.8,stock:25,emoji:"🍱",origin:"Ecuador"},
+{id:28,name:"Envoltorio reutilizable",category:"Reutilizables",price:7,oldPrice:9,rating:4.7,stock:30,emoji:"📦",origin:"Ecuador"},
+{id:29,name:"Paños reutilizables",category:"Hogar",price:8,oldPrice:10,rating:4.6,stock:40,emoji:"🧽",origin:"Ecuador"},
+{id:30,name:"Cepillo para vajilla",category:"Hogar",price:6,oldPrice:8,rating:4.5,stock:35,emoji:"🧹",origin:"Ecuador"},
+{id:31,name:"Jabón lavavajillas ecológico",category:"Hogar",price:7,oldPrice:9,rating:4.8,stock:35,emoji:"🫧",origin:"Ecuador"},
+{id:32,name:"Bolsa para frutas y verduras",category:"Reutilizables",price:5.50,oldPrice:7,rating:4.8,stock:45,emoji:"🥕",origin:"Ecuador"},
+{id:33,name:"Kit oficina sostenible",category:"Kits",price:24,oldPrice:30,rating:4.8,stock:20,emoji:"💼",origin:"Ecuador"},
+{id:34,name:"Kit viaje sostenible",category:"Viaje",price:32,oldPrice:40,rating:4.9,stock:15,emoji:"✈️",origin:"Ecuador"},
+{id:35,name:"Kit cocina sostenible",category:"Kits",price:29,oldPrice:36,rating:4.8,stock:18,emoji:"🍳",origin:"Ecuador"},
+{id:36,name:"Kit familiar reutilizable",category:"Kits",price:42,oldPrice:52,rating:4.9,stock:10,emoji:"👨👩👧",origin:"Ecuador"},
+{id:37,name:"Neceser sostenible",category:"Viaje",price:14,oldPrice:18,rating:4.7,stock:25,emoji:"🧳",origin:"Ecuador"},
+{id:38,name:"Toalla reutilizable",category:"Viaje",price:13,oldPrice:16,rating:4.6,stock:30,emoji:"🧺",origin:"Ecuador"},
+{id:39,name:"Kit jardinería ecológica",category:"Jardinería",price:26,oldPrice:32,rating:4.9,stock:15,emoji:"🌱",origin:"Ecuador"},
+{id:40,name:"Semillas para cultivar",category:"Jardinería",price:5,oldPrice:7,rating:4.8,stock:60,emoji:"🌻",origin:"Ecuador"}
+
+];
+
+/* ===========================
+   ESTADO
+=========================== */
+
+let cart = JSON.parse(localStorage.getItem("reviveCart")) || [];
+let favorites = JSON.parse(localStorage.getItem("reviveFavorites")) || [];
+let compare = [];
+let couponDiscount = 0;
+let selectedPayment = "transfer";
+
+function saveData(){
+  localStorage.setItem("reviveCart",JSON.stringify(cart));
+  localStorage.setItem("reviveFavorites",JSON.stringify(favorites));
+  updateBadges();
+}
+
+function updateBadges(){
+
+  const cartCount = cart.reduce((sum,item)=>sum+item.qty,0);
+
+  document.getElementById("cartBadge").textContent=cartCount;
+  document.getElementById("favoriteBadge").textContent=favorites.length;
+}
+
+/* ===========================
+   PRODUCTOS
+=========================== */
+
+function renderProducts(){
+
+  const container=document.getElementById("products");
+
+  const search=(document.getElementById("catalogSearch").value||"").toLowerCase();
+  const category=document.getElementById("categoryFilter").value;
+  const sort=document.getElementById("sortFilter").value;
+
+  let list=products.filter(p=>{
+
+    const matchSearch=
+      p.name.toLowerCase().includes(search) ||
+      p.category.toLowerCase().includes(search);
+
+    const matchCategory=
+      category==="all" || p.category===category;
+
+    return matchSearch && matchCategory;
+  });
+
+  if(sort==="priceLow") list.sort((a,b)=>a.price-b.price);
+  if(sort==="priceHigh") list.sort((a,b)=>b.price-a.price);
+  if(sort==="rating") list.sort((a,b)=>b.rating-a.rating);
+
+  if(sort==="discount"){
+    list.sort((a,b)=>
+      ((b.oldPrice-b.price)/b.oldPrice)-
+      ((a.oldPrice-a.price)/a.oldPrice)
+    );
+  }
+
+  if(!list.length){
+    container.innerHTML=`
+      <div style="grid-column:1/-1;text-align:center;padding:50px">
+        <div style="font-size:50px">🔎</div>
+        <h2>No encontramos productos</h2>
+        <p>Prueba con otra palabra o categoría.</p>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML=list.map(productCard).join("");
+}
+
+function productCard(p){
+
+  const discount=Math.round((1-p.price/p.oldPrice)*100);
+  const isFav=favorites.includes(p.id);
+
+  return `
+  <article class="product">
+
+    ${discount>0?`<span class="discount">-${discount}%</span>`:""}
+
+    <div class="product-img">${p.emoji}</div>
+
+    <div class="product-info">
+
+      <div class="product-category">${p.category}</div>
+
+      <h3>${p.name}</h3>
+
+      <div class="rating">
+        ${"★".repeat(Math.round(p.rating))}
+        <span style="color:#777">(${p.rating})</span>
+      </div>
+
+      <div class="price">
+        $${p.price.toFixed(2)}
+        <span class="old-price">$${p.oldPrice.toFixed(2)}</span>
+      </div>
+
+      <small>📦 Stock: ${p.stock} · 🇪🇨 ${p.origin}</small>
+
+      <div class="product-actions" style="margin-top:10px">
+
+        <button class="btn btn-primary"
+          onclick="addToCart(${p.id})">
+          🛒 Agregar
+        </button>
+
+        <button class="favorite"
+          onclick="toggleFavorite(${p.id})">
+          ${isFav?"❤️":"♡"}
+        </button>
+
+      </div>
+
+      <div style="display:flex;gap:6px;margin-top:7px">
+
+        <button class="btn btn-secondary"
+          style="flex:1;font-size:12px"
+          onclick="showProduct(${p.id})">
+          Ver detalles
+        </button>
+
+        <button class="btn btn-secondary"
+          style="font-size:12px"
+          onclick="addCompare(${p.id})">
+          ⚖️
+        </button>
+
+      </div>
+
+    </div>
+  </article>`;
+}
+
+function showProduct(id){
+
+  const p=products.find(x=>x.id===id);
+
+  document.getElementById("productDetail").innerHTML=`
+
+    <div style="text-align:center">
+
+      <div style="
+        font-size:100px;
+        background:#eef8f4;
+        border-radius:20px;
+        padding:30px">
+        ${p.emoji}
+      </div>
+
+      <small class="product-category">${p.category}</small>
+
+      <h2 style="margin:8px">${p.name}</h2>
+
+      <div class="rating">
+        ${"★".repeat(Math.round(p.rating))}
+        ${p.rating}/5
+      </div>
+
+      <div class="price">$${p.price.toFixed(2)}</div>
+
+      <p>
+        Producto sostenible pensado para apoyar hábitos
+        de consumo más responsables.
+      </p>
+
+      <div class="cards"
+           style="grid-template-columns:repeat(3,1fr);margin-top:20px">
+
+        <div class="info-card">
+          📦<br><strong>Stock</strong><br>${p.stock}
+        </div>
+
+        <div class="info-card">
+          🌎<br><strong>Origen</strong><br>${p.origin}
+        </div>
+
+        <div class="info-card">
+          ♻️<br><strong>Categoría</strong><br>${p.category}
+        </div>
+
+      </div>
+
+      <div class="actions" style="justify-content:center">
+
+        <button class="btn btn-primary"
+          onclick="addToCart(${p.id});closeModal('productModal')">
+          🛒 Agregar al carrito
+        </button>
+
+        <button class="btn btn-secondary"
+          onclick="toggleFavorite(${p.id})">
+          ❤️ Favoritos
+        </button>
+
+        <button class="btn btn-yellow"
+          onclick="openModal('quoteModal')">
+          💬 Preguntar / Cotizar
+        </button>
+
+      </div>
+
+    </div>
+  `;
+
+  openModal("productModal");
+}
+
+/* ===========================
+   BUSCADOR
+=========================== */
+
+function searchProducts(){
+
+  const value=document.getElementById("searchInput").value;
+
+  document.getElementById("catalogSearch").value=value;
+
+  document.getElementById("tienda").scrollIntoView();
+
+  renderProducts();
+}
+
+/* ===========================
+   CATEGORÍAS
+=========================== */
+
+function filterCategory(category){
+
+  document.getElementById("categoryFilter").value=category;
+
+  document.getElementById("catalogSearch").value="";
+
+  document.getElementById("tienda").scrollIntoView();
+
+  renderProducts();
+}
+
+function clearFilters(){
+
+  document.getElementById("catalogSearch").value="";
+  document.getElementById("categoryFilter").value="all";
+  document.getElementById("sortFilter").value="relevant";
+
+  renderProducts();
+}
+
+/* ===========================
+   FAVORITOS
+=========================== */
+
+function toggleFavorite(id){
+
+  if(favorites.includes(id)){
+
+    favorites=favorites.filter(x=>x!==id);
+
+    showNotification("♡ Producto eliminado de favoritos");
+
+  }else{
+
+    favorites.push(id);
+
+    showNotification("❤️ Producto guardado en favoritos");
+  }
+
+  saveData();
+  renderProducts();
+}
+
+function renderFavorites(){
+
+  const box=document.getElementById("favoriteItems");
+
+  if(!favorites.length){
+
+    box.innerHTML=`
+      <div style="text-align:center;padding:40px">
+        <div style="font-size:50px">🤍</div>
+        <h3>Aún no tienes favoritos</h3>
+        <p>Guarda productos que te interesen.</p>
+      </div>`;
+    return;
+  }
+
+  box.innerHTML=favorites.map(id=>{
+
+    const p=products.find(x=>x.id===id);
+
+    return `
+      <div class="cart-item">
+
+        <div class="cart-img">${p.emoji}</div>
+
+        <div>
+          <strong>${p.name}</strong>
+          <div>$${p.price.toFixed(2)}</div>
+        </div>
+
+        <button class="btn btn-primary"
+          onclick="addToCart(${p.id})">
+          🛒
+        </button>
+
+      </div>
+    `;
+
+  }).join("");
+}
+
+/* ===========================
+   CARRITO
+=========================== */
+
+function addToCart(id){
+
+  const p=products.find(x=>x.id===id);
+
+  const existing=cart.find(x=>x.id===id);
+
+  if(existing){
+    existing.qty++;
+  }else{
+    cart.push({id,qty:1});
+  }
+
+  saveData();
+  updateCart();
+
+  showNotification("✓ Producto agregado al carrito");
+}
+
+function removeFromCart(id){
+
+  cart=cart.filter(x=>x.id!==id);
+
+  saveData();
+  updateCart();
+}
+
+function changeQty(id,amount){
+
+  const item=cart.find(x=>x.id===id);
+
+  if(!item)return;
+
+  item.qty+=amount;
+
+  if(item.qty<=0){
+    removeFromCart(id);
+    return;
+  }
+
+  saveData();
+  updateCart();
+}
+
+function calculateSubtotal(){
+
+  return cart.reduce((sum,item)=>{
+
+    const p=products.find(x=>x.id===item.id);
+
+    return sum+p.price*item.qty;
+
+  },0);
+}
+
+function updateCart(){
+
+  const box=document.getElementById("cartItems");
+
+  if(!cart.length){
+
+    box.innerHTML=`
+      <div style="text-align:center;padding:40px">
+        <div style="font-size:60px">🛒</div>
+        <h3>Tu carrito está vacío</h3>
+        <p>Agrega productos sostenibles para comenzar.</p>
+      </div>`;
+
+  }else{
+
+    box.innerHTML=cart.map(item=>{
+
+      const p=products.find(x=>x.id===item.id);
+
+      return `
+        <div class="cart-item">
+
+          <div class="cart-img">${p.emoji}</div>
+
+          <div>
+            <strong>${p.name}</strong>
+            <div>$${p.price.toFixed(2)}</div>
+
+            <div class="quantity">
+              <button onclick="changeQty(${p.id},-1)">−</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${p.id},1)">+</button>
+            </div>
+          </div>
+
+          <button onclick="removeFromCart(${p.id})"
+            style="background:#fff0f0;color:#d44;padding:8px;border-radius:8px">
+            🗑️
+          </button>
+
+        </div>
+      `;
+
+    }).join("");
+  }
+
+  const subtotal=calculateSubtotal();
+
+  const shipping=
+    document.getElementById("shippingMethod")
+      ? Number(document.getElementById("shippingMethod").value)
+      : 4;
+
+  const total=Math.max(0,subtotal-couponDiscount)+
+               (cart.length?shipping:0);
+
+  document.getElementById("cartSubtotal").textContent=
+    "$"+subtotal.toFixed(2);
+
+  document.getElementById("cartDiscount").textContent=
+    "-$"+couponDiscount.toFixed(2);
+
+  document.getElementById("cartShipping").textContent=
+    "$"+(cart.length?shipping:0).toFixed(2);
+
+  document.getElementById("cartTotal").textContent=
+    "$"+total.toFixed(2);
+
+  const checkoutTotal=document.getElementById("checkoutTotal");
+
+  if(checkoutTotal)
+    checkoutTotal.textContent="$"+total.toFixed(2);
+}
+
+/* ===========================
+   CUPONES
+=========================== */
+
+function applyCoupon(){
+
+  const code=document.getElementById("couponInput")
+    .value.trim().toUpperCase();
+
+  const subtotal=calculateSubtotal();
+
+  if(code==="REVIVE10"){
+
+    couponDiscount=subtotal*.10;
+
+    showNotification("🎉 Cupón REVIVE10 aplicado");
+
+  }else if(code==="ECO20"){
+
+    couponDiscount=subtotal*.20;
+
+    showNotification("🌱 Cupón ECO20 aplicado");
+
+  }else if(code==="SOSTENIBLE"){
+
+    couponDiscount=5;
+
+    showNotification("💚 Descuento sostenible aplicado");
+
+  }else{
+
+    couponDiscount=0;
+
+    showNotification("❌ Cupón no válido");
+  }
+
+  updateCart();
+}
+
+/* ===========================
+   CHECKOUT
+=========================== */
+
+function openCheckout(){
+
+  if(!cart.length){
+
+    showNotification("🛒 Agrega productos antes de continuar");
+
+    return;
+  }
+
+  closeModal("cartModal");
+  openModal("checkoutModal");
+  updateCart();
+}
+
+function selectPayment(type,element){
+
+  selectedPayment=type;
+
+  document.querySelectorAll(".payment-box")
+    .forEach(x=>x.classList.remove("active"));
+
+  element.classList.add("active");
+
+  document.querySelectorAll(".payment-details")
+    .forEach(x=>x.classList.remove("show"));
+
+  if(type==="card"){
+    document.getElementById("cardDetails")
+      .classList.add("show");
+  }
+
+  if(type==="transfer"){
+    document.getElementById("transferDetails")
+      .classList.add("show");
+  }
+}
+
+function submitOrder(){
+
+  if(!cart.length){
+
+    showNotification("Tu carrito está vacío");
+    return;
+  }
+
+  const name=document.getElementById("checkoutName").value.trim();
+  const email=document.getElementById("checkoutEmail").value.trim();
+  const address=document.getElementById("checkoutAddress").value.trim();
+
+  if(!name || !email || !address){
+
+    showNotification("⚠️ Completa los datos obligatorios");
+    return;
+  }
+
+  const order=
+    "REV-"+Math.floor(100000+Math.random()*900000);
+
+  const total=document.getElementById("checkoutTotal").textContent;
+
+  closeModal("checkoutModal");
+
+  document.getElementById("productDetail").innerHTML=`
+    <div style="text-align:center;padding:25px">
+
+      <div style="font-size:80px">🎉</div>
+
+      <h2>¡Gracias por comprar en ReVive!</h2>
+
+      <p style="margin-top:10px">
+        Tu pedido ha sido registrado como demostración.
+      </p>
+
+      <div class="profile-result" style="text-align:left">
+
+        <p><strong>Número de pedido:</strong> ${order}</p>
+
+        <p><strong>Total:</strong> ${total}</p>
+
+        <p><strong>Método:</strong> ${selectedPayment}</p>
+
+        <hr style="margin:15px 0">
+
+        <strong>Estado del pedido</strong>
+
+        <div class="process">
+          <div>🟢<br>Recibido</div>
+          <div>⚪<br>Preparando</div>
+          <div>⚪<br>Enviado</div>
+          <div>⚪<br>En camino</div>
+          <div>⚪<br>Entregado</div>
+        </div>
+
+      </div>
+
+      <button class="btn btn-primary"
+        onclick="closeModal('productModal')">
+        Continuar comprando
+      </button>
+
+    </div>
+  `;
+
+  cart=[];
+  couponDiscount=0;
+  saveData();
+
+  openModal("productModal");
+}
+
+/* ===========================
+   TRANSFERENCIA
+=========================== */
+
+function copyTransfer(event){
+
+  event.stopPropagation();
+
+  navigator.clipboard?.writeText(
+    "Cuenta: 2208654745 | BrodúBanco: 20006989533"
+  );
+
+  showNotification("📋 Datos de transferencia copiados");
+}
+
+function formatCard(input){
+
+  let value=input.value.replace(/\D/g,"");
+
+  value=value.substring(0,16);
+
+  input.value=value.replace(/(.{4})/g,"$1 ").trim();
+}
+
+/* ===========================
+   COMPARADOR
+=========================== */
+
+function addCompare(id){
+
+  if(compare.includes(id)){
+
+    compare=compare.filter(x=>x!==id);
+
+    showNotification("Producto retirado del comparador");
+
+  }else{
+
+    if(compare.length>=3){
+
+      showNotification("⚠️ Puedes comparar máximo 3 productos");
+      return;
+    }
+
+    compare.push(id);
+
+    showNotification("⚖️ Producto agregado al comparador");
+  }
+
+  renderCompare();
+}
+
+function renderCompare(){
+
+  const box=document.getElementById("compareContent");
+
+  if(!compare.length){
+
+    box.innerHTML=`
+      <div style="text-align:center;padding:40px">
+        <div style="font-size:50px">⚖️</div>
+        <p>Agrega productos desde el catálogo para compararlos.</p>
+      </div>`;
+
+    return;
+  }
+
+  const selected=compare.map(id=>products.find(p=>p.id===id));
+
+  box.innerHTML=`
+
+    <table class="compare-table">
+
+      <tr>
+        <th>Característica</th>
+        ${selected.map(p=>`<th>${p.emoji}<br>${p.name}</th>`).join("")}
+      </tr>
+
+      <tr>
+        <td>Precio</td>
+        ${selected.map(p=>`<td>$${p.price.toFixed(2)}</td>`).join("")}
+      </tr>
+
+      <tr>
+        <td>Valoración</td>
+        ${selected.map(p=>`<td>⭐ ${p.rating}</td>`).join("")}
+      </tr>
+
+      <tr>
+        <td>Categoría</td>
+        ${selected.map(p=>`<td>${p.category}</td>`).join("")}
+      </tr>
+
+      <tr>
+        <td>Origen</td>
+        ${selected.map(p=>`<td>${p.origin}</td>`).join("")}
+      </tr>
+
+      <tr>
+        <td>Stock</td>
+        ${selected.map(p=>`<td>${p.stock}</td>`).join("")}
+      </tr>
+
+      <tr>
+        <td></td>
+        ${selected.map(p=>`
+          <td>
+            <button class="btn btn-primary"
+              onclick="addToCart(${p.id})">
+              🛒 Comprar
+            </button>
+          </td>
+        `).join("")}
+      </tr>
+
+    </table>
+  `;
+}
+
+/* ===========================
+   PERFIL
+=========================== */
+
+function generateProfile(){
+
+  const category=document.getElementById("profileCategory").value;
+  const frequency=document.getElementById("profileFrequency").value;
+  const goal=document.getElementById("profileGoal").value;
+
+  const recommendations=
+    products
+      .filter(p=>p.category===category)
+      .slice(0,3);
+
+  document.getElementById("profileResult").innerHTML=`
+
+    <div class="profile-result">
+
+      <h3>🌱 Tu perfil sostenible</h3>
+
+      <p>
+        Te interesa principalmente <strong>${category}</strong>,
+        reutilizas productos <strong>${frequency.toLowerCase()}</strong>
+        y quieres <strong>${goal.toLowerCase()}</strong>.
+      </p>
+
+      <br>
+
+      <strong>✨ Te recomendamos:</strong>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+
+        ${recommendations.map(p=>`
+          <button class="btn btn-secondary"
+            onclick="showProduct(${p.id})">
+            ${p.emoji} ${p.name}
+          </button>
+        `).join("")}
+
+      </div>
+
+    </div>
+  `;
+}
+
+/* ===========================
+   CHAT REVITO
+=========================== */
+
+function toggleChat(){
+
+  document.getElementById("chatWindow")
+    .classList.toggle("show");
+}
+
+function chatAnswer(type){
+
+  const answers={
+    buy:"Puedes comprar seleccionando un producto, agregándolo al carrito y completando el checkout.",
+    shipping:"ReVive contempla envío estándar, rápido e internacional como opciones demostrativas.",
+    international:"La plataforma está diseñada con una visión de expansión hacia mercados internacionales.",
+    supplier:"Puedes registrarte como proveedor mediante el formulario 'Vender en ReVive'.",
+    impact:"ReVive busca promover reutilización, educación ambiental, consumo responsable e impacto social."
+  };
+
+  const body=document.getElementById("chatBody");
+
+  body.innerHTML+=`
+    <div class="chat-message">
+      ${answers[type]}
+    </div>
+  `;
+
+  body.scrollTop=body.scrollHeight;
+}
+
+/* ===========================
+   VIDEO
+=========================== */
+
+let videoIndex=0;
+let videoTimer=null;
+
+function showScene(){
+
+  const scenes=document.querySelectorAll(".scene");
+
+  scenes.forEach((scene,i)=>{
+    scene.classList.toggle("active",i===videoIndex);
+  });
+
+  const progress=
+    (videoIndex/(scenes.length-1))*100;
+
+  document.getElementById("videoProgress")
+    .style.width=progress+"%";
+}
+
+function videoPlay(){
+
+  if(videoTimer)return;
+
+  videoTimer=setInterval(()=>{
+
+    const scenes=document.querySelectorAll(".scene");
+
+    videoIndex++;
+
+    if(videoIndex>=scenes.length){
+      videoIndex=0;
+    }
+
+    showScene();
+
+  },3500);
+}
+
+function videoPause(){
+
+  clearInterval(videoTimer);
+  videoTimer=null;
+}
+
+function videoRestart(){
+
+  videoPause();
+  videoIndex=0;
+  showScene();
+}
+
+/* ===========================
+   FAQ
+=========================== */
+
+function toggleFaq(element){
+
+  element.parentElement.classList.toggle("open");
+
+  const span=element.querySelector("span");
+
+  span.textContent=
+    element.parentElement.classList.contains("open")
+      ? "−"
+      : "+";
+}
+
+/* ===========================
+   FORMULARIOS
+=========================== */
+
+function sendContact(){
+
+  const name=document.getElementById("contactName").value;
+
+  if(!name){
+
+    showNotification("⚠️ Escribe tu nombre");
+
+    return;
+  }
+
+  showNotification("📩 Mensaje enviado correctamente");
+
+  document.getElementById("contactName").value="";
+  document.getElementById("contactEmail").value="";
+  document.getElementById("contactSubject").value="";
+  document.getElementById("contactMessage").value="";
+}
+
+function submitSupplier(){
+
+  const business=document.getElementById("supplierBusiness").value;
+
+  if(!business){
+
+    showNotification("⚠️ Completa el nombre del negocio");
+    return;
+  }
+
+  closeModal("supplierModal");
+
+  showNotification("🤝 Solicitud de proveedor recibida");
+
+}
+
+function submitQuote(){
+
+  const company=document.getElementById("quoteCompany").value;
+
+  if(!company){
+
+    showNotification("⚠️ Ingresa el nombre de la empresa");
+    return;
+  }
+
+  closeModal("quoteModal");
+
+  showNotification("📄 Solicitud de cotización enviada");
+
+}
+
+/* ===========================
+   MODALES
+=========================== */
+
+function openModal(id){
+
+  document.getElementById(id).classList.add("show");
+
+  if(id==="cartModal")updateCart();
+
+  if(id==="favoritesModal")renderFavorites();
+
+  if(id==="compareModal")renderCompare();
+}
+
+function closeModal(id){
+
+  document.getElementById(id).classList.remove("show");
+}
+
+/* cerrar al hacer clic fuera */
+
+document.querySelectorAll(".modal").forEach(modal=>{
+
+  modal.addEventListener("click",function(e){
+
+    if(e.target===modal){
+      modal.classList.remove("show");
+    }
+
+  });
+
+});
+
+/* ===========================
+   NOTIFICACIONES
+=========================== */
+
+let notificationTimer;
+
+function showNotification(message){
+
+  const box=document.getElementById("notification");
+
+  box.textContent=message;
+
+  box.classList.add("show");
+
+  clearTimeout(notificationTimer);
+
+  notificationTimer=setTimeout(()=>{
+    box.classList.remove("show");
+  },2500);
+}
+
+/* ===========================
+   MENÚ MÓVIL
+=========================== */
+
+function toggleMobile(){
+
+  const menu=document.getElementById("menu");
+
+  if(menu.style.display==="flex"){
+    menu.style.display="";
+  }else{
+
+    menu.style.display="flex";
+    menu.style.flexDirection="column";
+    menu.style.position="absolute";
+    menu.style.top="75px";
+    menu.style.left="0";
+    menu.style.right="0";
+    menu.style.background="white";
+    menu.style.padding="20px";
+    menu.style.boxShadow="0 10px 30px rgba(0,0,0,.1)";
+  }
+}
+
+/* ===========================
+   INICIO
+=========================== */
+
+renderProducts();
+updateBadges();
+showScene();
+
+</script>
+
+</body>
+</html>
